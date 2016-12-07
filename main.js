@@ -9,7 +9,7 @@ let win
 
 function createWindow () {
   // Create the browser window
-  win = new BrowserWindow({ width: 200, height: 100 })
+  win = new BrowserWindow({ width: 800, height: 600 })
 
   // Load the index.html
   win.loadURL(url.format({
@@ -17,6 +17,19 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+
+  // Open the devtools
+  win.webContents.openDevTools()
+
+  // This console goes to the terminal
+  console.log("window created")
+
+  // Emitted when the window is closed
+  win.on('closed', () => {
+    console.log("window closed")
+    // Dereference the window object
+    win = null
+  })
 }
 
 // This method will be called when Electron has finished initialization
