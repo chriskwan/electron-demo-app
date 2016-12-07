@@ -1,4 +1,6 @@
 const electron = require('electron')
+// use remote so you can access built-in modules of the main process (e.g. app) in the renderer process
+const app = electron.remote.app
 const desktopCapturer = electron.desktopCapturer
 const electronScreen = electron.screen
 const shell = electron.shell
@@ -25,7 +27,9 @@ screenshot.addEventListener('click', event => {
 
     sources.forEach(source => {
       if (source.name === 'Entire screen' || source.name === 'Screen 1') {
-        const screenshotPath = path.join(os.tmpdir(), 'screenshot.png')
+        const desktopPath = app.getPath('desktop')
+        //const screenshotPath = path.join(os.tmpdir(), 'screenshot.png')
+        const screenshotPath = path.join(desktopPath, `Screenshot_From_Electron_${new Date()}.png`)
 
         fs.writeFile(screenshotPath, source.thumbnail.toPng(), error => {
           if (error) {
