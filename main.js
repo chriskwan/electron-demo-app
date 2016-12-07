@@ -9,7 +9,7 @@ let win
 
 function createWindow () {
   // Create the browser window
-  win = new BrowserWindow({ width: 800, height: 600 })
+  win = new BrowserWindow({ width: 800, height: 600, show: false })
 
   // Load the index.html
   win.loadURL(url.format({
@@ -34,6 +34,10 @@ function createWindow () {
     console.log("window closed")
     // Dereference the window object
     win = null
+  })
+
+  win.once('ready-to-show', () => {
+    win.show()
   })
 }
 
