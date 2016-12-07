@@ -19,7 +19,7 @@ function createWindow () {
   }))
 
   // Open the devtools
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
   // You will need to start electron with the --debug=portnumber flag
   // and use an external debugger
