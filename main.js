@@ -6,6 +6,7 @@ const url = require('url')
 // if you don't, the window will be automatically closed
 // when the JavaScript object is garbage collected
 let win
+let otherWin
 
 function createWindow () {
   // Create the browser window
@@ -17,6 +18,10 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
+
+  // Another window, just because
+  otherWin = new BrowserWindow({ width: 200, height: 200, x: 10, y: 20, frame: false})
+  otherWin.loadURL('https://media.tenor.co/images/841aeb9f113999616d097b414c539dfd/raw')
 
   // Open the devtools
   //win.webContents.openDevTools()
@@ -34,6 +39,9 @@ function createWindow () {
     console.log("window closed")
     // Dereference the window object
     win = null
+
+    otherWin.close();
+    otherWin = null;
   })
 
   win.once('ready-to-show', () => {
