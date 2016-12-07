@@ -21,6 +21,11 @@ function createWindow () {
   // Open the devtools
   win.webContents.openDevTools()
 
+  // You will need to start electron with the --debug=portnumber flag
+  // and use an external debugger
+  // see: https://github.com/electron/electron/blob/master/docs/tutorial/debugging-main-process.md
+  //debugger;
+
   // This console goes to the terminal
   console.log("window created")
 
