@@ -29,7 +29,9 @@ screenshot.addEventListener('click', event => {
       if (source.name === 'Entire screen' || source.name === 'Screen 1') {
         const desktopPath = app.getPath('desktop')
         //const screenshotPath = path.join(os.tmpdir(), 'screenshot.png')
-        const screenshotPath = path.join(desktopPath, `Screenshot_From_Electron_${new Date()}.png`)
+        const date = new Date();
+        const timestamp = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+        const screenshotPath = path.join(desktopPath, `Screenshot_From_Electron_${timestamp}.png`)
 
         fs.writeFile(screenshotPath, source.thumbnail.toPng(), error => {
           if (error) {
