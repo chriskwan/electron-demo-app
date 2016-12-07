@@ -8,10 +8,29 @@
 
     <button id='screen-shot'>Take Screenshot</button>
     <span id='screenshot-path'></span>
+    <br />
+    URL: <input id='web-url' value='google.com'/>
+    <button id='web-go'>Go!</button>
 
-    <webview src="http://www.google.com" style="display:inline-flex; width:640px; height:480px; border: 1px solid;"></webview>
+    <webview id='web-view' src="" style="display:inline-flex; width:640px; height:480px; border: 1px solid;"></webview>
 
     <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('web-go').addEventListener('click', () => {
+
+          const webView = document.getElementById('web-view')
+          //TODO: getting errors with this:
+          // webView.loadURL(
+          //   document.getElementById('web-url').value
+          // );
+          let url = document.getElementById('web-url').value;
+          if (url.indexOf('http://') === -1 || url.indexOf('https://') === -1) {
+            url = `http://${url}`
+          }
+          webView.setAttribute('src', url)
+        })
+      })
+
       //alert("hey there!")
 
       // this will appear in dev console
