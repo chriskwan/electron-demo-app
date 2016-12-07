@@ -5,13 +5,20 @@
   </head>
   <body>
     Hello world!
+
+    <button id='screen-shot'>Take Screenshot</button>
+    <span id='screenshot-path'></span>
+
     <script>
-      alert("hey there!")
+      //alert("hey there!")
+
       // this will appear in dev console
       console.log("index.html loaded")
 
       // debugger statements will get hit if you refresh the dev console
       // debugger
+
+      require('./renderer')
     </script>
   </body>
 </html>
